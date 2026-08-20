@@ -1,0 +1,16 @@
+# Dart / Flutter
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+*.iml
+.idea/
+.vscode/
+
+# Betriebssystem
+.DS_Store
+*.log
+
+# Lokales Agenten-Tooling (nicht ins Repo)
+# CLAUDE.md

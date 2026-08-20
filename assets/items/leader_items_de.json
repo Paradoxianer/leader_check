@@ -1,0 +1,189 @@
+{
+  "itembankVersion": 1,
+  "locale": "de",
+  "scaleMax": 4,
+  "likertLabels": [
+    "trifft gar nicht zu",
+    "trifft eher nicht zu",
+    "teils/teils",
+    "trifft eher zu",
+    "trifft voll zu"
+  ],
+  "scales": [
+    {
+      "id": "consistency",
+      "name": "Berechenbarkeit",
+      "polarity": "risk",
+      "riskLabel": "unberechenbar",
+      "healthyLabel": "berechenbar",
+      "followerEffect": "zögerliche Mitarbeiter",
+      "shortDescription": "Wer nicht weiß, woran er bei dir ist, wird vorsichtig. Nicht aus Respekt, sondern zum Selbstschutz.",
+      "lowText": "Dein Team kann sich auf dich einstellen. Das ist die Grundlage, auf der alles andere aufbaut.",
+      "midText": "In ruhigen Zeiten bist du berechenbar, unter Druck vermutlich weniger. Genau da schauen die Leute aber hin.",
+      "highText": "Deine Leute wissen nicht, welche Version von dir sie heute bekommen. Solange das so ist, gehen sie auf Nummer sicher statt ins Risiko.",
+      "nextStep": "Such dir eine einzige Sache, die ab sofort immer gleich läuft: eine feste Teamrunde, eine feste Antwortzeit, ein fester Umgang mit schlechten Nachrichten. Eine. Und die dann sechs Wochen lang ohne Ausnahme.",
+      "items": [
+        {
+          "id": "con_1",
+          "text": "Meine Stimmung entscheidet mit darüber, wie ein Gespräch mit mir ausgeht.",
+          "reverse": false
+        },
+        {
+          "id": "con_2",
+          "text": "Mein Team kann ziemlich genau vorhersagen, wie ich auf schlechte Nachrichten reagiere.",
+          "reverse": true
+        },
+        {
+          "id": "con_3",
+          "text": "Ich ändere Prioritäten kurzfristig, ohne die Änderung zu erklären.",
+          "reverse": false
+        },
+        {
+          "id": "con_4",
+          "text": "Was ich am Montag zusage, gilt auch noch am Freitag.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "id": "power",
+      "name": "Umgang mit Macht",
+      "polarity": "risk",
+      "riskLabel": "dominierend",
+      "healthyLabel": "beteiligend",
+      "followerEffect": "gehorsame Mitarbeiter",
+      "shortDescription": "Druck erzeugt Zustimmung. Zustimmung ist aber nicht dasselbe wie Überzeugung — und hält nur so lange, wie der Druck anhält.",
+      "lowText": "Du holst andere in die Entscheidung hinein. Was dabei herauskommt, tragen sie deshalb auch mit.",
+      "midText": "Du fragst — aber oft erst, wenn du deine Meinung schon hast. Der Unterschied fällt deinem Team auf, dir vielleicht nicht.",
+      "highText": "Du bekommst, was du willst. Was du nicht bekommst, ist Widerspruch — und damit die Information, die dich vor Fehlern bewahren würde.",
+      "nextStep": "Nimm dir für die nächste Besprechung vor, deine eigene Meinung als Letzter zu sagen. Nicht als Erster, nicht in der Mitte. Als Letzter.",
+      "items": [
+        {
+          "id": "pow_1",
+          "text": "In Diskussionen setze ich mich am Ende meistens durch.",
+          "reverse": false
+        },
+        {
+          "id": "pow_2",
+          "text": "In einer Besprechung stelle ich mehr Fragen, als ich Anweisungen gebe.",
+          "reverse": true
+        },
+        {
+          "id": "pow_3",
+          "text": "Wenn jemand meinen Vorschlag infrage stellt, erkläre ich ihn noch einmal — statt zu fragen, was dagegen spricht.",
+          "reverse": false
+        },
+        {
+          "id": "pow_4",
+          "text": "Mir fällt auf, dass Leute mir eher zustimmen, als offen zu widersprechen.",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "id": "openness",
+      "name": "Offenheit",
+      "polarity": "risk",
+      "riskLabel": "verschlossen",
+      "healthyLabel": "transparent",
+      "followerEffect": "vorsichtige Mitarbeiter",
+      "shortDescription": "Wer nichts von dir erfährt, erzählt dir auch nichts. Und ohne ehrliche Rückmeldung ist deine Zeit als Leiter gezählt.",
+      "lowText": "Bei dir weiß man, woran man ist — auch bei den unfertigen Sachen. Deshalb erfährst du Dinge, die andere nie hören.",
+      "midText": "Du teilst Ergebnisse, aber selten den Weg dorthin. Vertrauen entsteht eher am Weg als am Ergebnis.",
+      "highText": "Du hältst Informationen zurück, und dein Umfeld hält Informationen zurück. Der zweite Teil ist der gefährlichere.",
+      "nextStep": "Erzähl deinem Team diese Woche von einer Entscheidung, bei der du dir noch unsicher bist — bevor du sie getroffen hast. Und dann hör zu.",
+      "items": [
+        {
+          "id": "ope_1",
+          "text": "Informationen gebe ich erst weiter, wenn eine Entscheidung endgültig ist.",
+          "reverse": false
+        },
+        {
+          "id": "ope_2",
+          "text": "Ich spreche im Team auch über Entscheidungen, bei denen ich noch unsicher bin.",
+          "reverse": true
+        },
+        {
+          "id": "ope_3",
+          "text": "Eigene Fehler behalte ich lieber für mich, bis sie sich von selbst erledigt haben.",
+          "reverse": false
+        },
+        {
+          "id": "ope_4",
+          "text": "In den letzten Wochen hat mir jemand unaufgefordert gesagt, was ihm an mir nicht passt.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "name": "Handlungsbereitschaft",
+      "polarity": "risk",
+      "riskLabel": "passiv",
+      "healthyLabel": "aktiv",
+      "followerEffect": "innerlich abgemeldete Mitarbeiter",
+      "shortDescription": "Wenn alle das Problem sehen und niemand es anpackt, ist irgendwann nicht mehr das Problem das Problem, sondern die Leitung.",
+      "lowText": "Du packst an, auch wenn es unbequem wird. Dein Team sieht daran, dass die Sache dir wirklich wichtig ist.",
+      "midText": "Die klaren Fälle löst du. Die zähen bleiben liegen — und genau die beobachtet dein Team.",
+      "highText": "Es gibt Dinge, die alle sehen und die du nicht anfasst. Dein Team hat das bemerkt und die Schlussfolgerung längst gezogen: Wenn es dir nicht wichtig ist, warum sollte es uns wichtig sein?",
+      "nextStep": "Schreib das eine Problem auf, das du seit Monaten vor dir herschiebst. Setz dir für den ersten kleinen Schritt einen Termin in dieser Woche. Nichts tun ist schlimmer als das Falsche tun.",
+      "items": [
+        {
+          "id": "act_1",
+          "text": "In meinem Verantwortungsbereich gibt es ein Problem, das alle sehen und das ich seit Monaten nicht anfasse.",
+          "reverse": false
+        },
+        {
+          "id": "act_2",
+          "text": "Bei Konflikten im Team warte ich erst einmal ab, ob sie sich von allein klären.",
+          "reverse": false
+        },
+        {
+          "id": "act_3",
+          "text": "Unangenehme Gespräche führe ich lieber diese Woche als nächsten Monat.",
+          "reverse": true
+        },
+        {
+          "id": "act_4",
+          "text": "Ich schiebe Entscheidungen auf, bis ich wirklich alle Informationen habe.",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "id": "empowerment",
+      "name": "Bevollmächtigung",
+      "polarity": "strength",
+      "riskLabel": "alles läuft über dich",
+      "healthyLabel": "andere dürfen Ja sagen",
+      "followerEffect": "neue Leiter",
+      "shortDescription": "Die Stufe über gesund: Du bringst nicht nur Leute dazu, dir zu folgen — du bringst Leute hervor, denen andere folgen.",
+      "lowText": "Zurzeit läuft das Wesentliche über dich. Dein Team wächst dadurch nicht über dich hinaus.",
+      "midText": "Du delegierst Aufgaben, aber die Entscheidungen behältst du. Ermächtigung fängt erst bei den Entscheidungen an.",
+      "highText": "Menschen tief in deinem Bereich dürfen Ja sagen. Genau daran erkennt man eine ermächtigende Kultur.",
+      "nextStep": "Such eine Entscheidung, die du bisher selbst triffst, und gib sie diese Woche ab — mit Budget- und Entscheidungsrahmen, nicht nur mit der Aufgabe.",
+      "items": [
+        {
+          "id": "emp_1",
+          "text": "Menschen in meinem Team dürfen Dinge entscheiden, ohne mich vorher zu fragen.",
+          "reverse": false
+        },
+        {
+          "id": "emp_2",
+          "text": "Mindestens eine Person hat durch meine Begleitung selbst Leitungsverantwortung übernommen.",
+          "reverse": false
+        },
+        {
+          "id": "emp_3",
+          "text": "Wichtige Zusagen nach außen mache am Ende doch lieber ich selbst.",
+          "reverse": true
+        },
+        {
+          "id": "emp_4",
+          "text": "Wenn jemand aus meinem Team anders entscheidet, als ich entschieden hätte, halte ich die Entscheidung trotzdem.",
+          "reverse": false
+        }
+      ]
+    }
+  ]
+}

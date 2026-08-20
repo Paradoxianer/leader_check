@@ -1,0 +1,11 @@
+{
+  "name": "Leitertyp-Check",
+  "short_name": "Leitertyp",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F3F1EC",
+  "theme_color": "#14262B",
+  "description": "Kurz-Check für Leitungsstile im Leiterschaftskurs.",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false
+}
