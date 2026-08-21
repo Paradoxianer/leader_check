@@ -213,7 +213,7 @@ class _NextStepCard extends StatelessWidget {
         color: AppColors.card,
         borderRadius: BorderRadius.circular(6),
         border: Border(
-          left: BorderSide(color: AppColors.accent, width: 3),
+          left: const BorderSide(color: AppColors.accent, width: 3),
           top: BorderSide(color: AppColors.ink.withValues(alpha: 0.08)),
           right: BorderSide(color: AppColors.ink.withValues(alpha: 0.08)),
           bottom: BorderSide(color: AppColors.ink.withValues(alpha: 0.08)),
