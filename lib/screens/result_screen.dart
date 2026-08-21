@@ -287,6 +287,12 @@ class _NextStepCard extends StatelessWidget {
     // ClipRRect statt eines Border mit gemischten Seitenfarben: Flutter
     // kann bei borderRadius nur einfarbige Border zeichnen, sonst wirft
     // BoxBorder.paint() bei jedem Repaint eine Exception.
+    //
+    // IntrinsicHeight ist hier nötig: Diese Karte steckt in einer Column
+    // ohne begrenzte Höhe (SingleChildScrollView), CrossAxisAlignment.stretch
+    // bräuchte dort sonst eine unendliche Höhe zum Strecken — im
+    // Debug-Build ein sofortiger Assert, im Release-Build (ohne Asserts)
+    // ein stiller Hänger mit leerer Seite.
     return ClipRRect(
       borderRadius: BorderRadius.circular(6),
       child: DecoratedBox(
@@ -294,24 +300,26 @@ class _NextStepCard extends StatelessWidget {
           color: AppColors.card,
           border: Border.all(color: AppColors.ink.withValues(alpha: 0.08)),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(width: 3, color: AppColors.accent),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(scaleName.toUpperCase(), style: text.labelSmall),
-                    const SizedBox(height: 8),
-                    Text(step, style: text.bodyLarge),
-                  ],
+        child: IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(width: 3, color: AppColors.accent),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(scaleName.toUpperCase(), style: text.labelSmall),
+                      const SizedBox(height: 8),
+                      Text(step, style: text.bodyLarge),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
