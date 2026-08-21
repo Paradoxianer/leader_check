@@ -1,5 +1,5 @@
 {
-  "itembankVersion": 2,
+  "itembankVersion": 3,
   "locale": "de",
   "scaleMax": 5,
   "likertLabels": [
@@ -181,7 +181,7 @@
         },
         {
           "id": "emp_4",
-          "text": "Wenn jemand aus meinem Team anders entscheidet, als ich entschieden hätte, halte ich die Entscheidung trotzdem.",
+          "text": "Wenn jemand aus meinem Team anders entscheidet, als ich entschieden hätte, lasse ich diese Entscheidung stehen.",
           "reverse": false
         }
       ]

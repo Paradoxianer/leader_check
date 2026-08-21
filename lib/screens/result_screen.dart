@@ -1,16 +1,56 @@
+// Projekt ist bewusst web-only (kein android/ios/desktop-Target), daher ist
+// dart:html hier der richtige, abhängigkeitsfreie Weg für den Bild-Download.
+// ignore_for_file: avoid_web_libraries_in_flutter, deprecated_member_use
+import 'dart:html' as html;
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import '../logic/scoring.dart';
 import '../theme.dart';
 import '../widgets/content_frame.dart';
+import '../widgets/radar_chart.dart';
 import '../widgets/scale_axis.dart';
 
 /// Ergebnisansicht: erst die Einordnung in einem Satz, dann die einzelnen
 /// Skalen, zuletzt genau ein nächster Schritt.
-class ResultScreen extends StatelessWidget {
+class ResultScreen extends StatefulWidget {
   final TestResult result;
 
   const ResultScreen({super.key, required this.result});
+
+  @override
+  State<ResultScreen> createState() => _ResultScreenState();
+}
+
+class _ResultScreenState extends State<ResultScreen> {
+  final GlobalKey _captureKey = GlobalKey();
+  bool _isSaving = false;
+
+  TestResult get result => widget.result;
+
+  /// Rendert den erfassten Bereich als PNG und stößt im Browser den
+  /// Download an. Nur Flutter-SDK-Bordmittel (RepaintBoundary, dart:html) —
+  /// das Projekt ist bewusst web-only, daher unproblematisch.
+  Future<void> _saveAsImage() async {
+    setState(() => _isSaving = true);
+    try {
+      final boundary = _captureKey.currentContext!.findRenderObject()
+          as RenderRepaintBoundary;
+      final image = await boundary.toImage(pixelRatio: 2);
+      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+      final bytes = byteData!.buffer.asUint8List();
+      final blob = html.Blob([bytes], 'image/png');
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      html.AnchorElement(href: url)
+        ..setAttribute('download', 'leitertyp-check-ergebnis.png')
+        ..click();
+      html.Url.revokeObjectUrl(url);
+    } finally {
+      if (mounted) setState(() => _isSaving = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +63,13 @@ class ResultScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              RepaintBoundary(
+                key: _captureKey,
+                child: Container(
+                  color: AppColors.surface,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
               Text('DEIN ERGEBNIS', style: text.labelSmall),
               const SizedBox(height: 12),
               Text(_headline(), style: text.displaySmall),
@@ -37,6 +84,21 @@ class ResultScreen extends StatelessWidget {
                 style: text.bodyMedium?.copyWith(color: AppColors.muted),
               ),
               const SizedBox(height: 24),
+
+              Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 420),
+                  child: RadarChart(
+                    labels: [
+                      for (final r in result.riskResults) r.scale.name,
+                    ],
+                    values: [
+                      for (final r in result.riskResults) r.percent,
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
 
               for (final scaleResult in result.ranked) ...[
                 _ScaleBlock(result: scaleResult),
@@ -75,12 +137,28 @@ class ResultScreen extends StatelessWidget {
                 'Ergebnis.',
                 style: text.bodyMedium?.copyWith(color: AppColors.muted),
               ),
-              const SizedBox(height: 28),
-              OutlinedButton(
-                onPressed: () => Navigator.of(context).popUntil(
-                  (route) => route.isFirst,
+                    ],
+                  ),
                 ),
-                child: const Text('Noch einmal'),
+              ),
+              const SizedBox(height: 28),
+              Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                children: [
+                  OutlinedButton(
+                    onPressed: () => Navigator.of(context).popUntil(
+                      (route) => route.isFirst,
+                    ),
+                    child: const Text('Noch einmal'),
+                  ),
+                  OutlinedButton(
+                    onPressed: _isSaving ? null : _saveAsImage,
+                    child: Text(
+                      _isSaving ? 'Speichert …' : 'Als Bild speichern',
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 40),
             ],
@@ -206,26 +284,35 @@ class _NextStepCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final text = Theme.of(context).textTheme;
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: AppColors.card,
-        borderRadius: BorderRadius.circular(6),
-        border: Border(
-          left: const BorderSide(color: AppColors.accent, width: 3),
-          top: BorderSide(color: AppColors.ink.withValues(alpha: 0.08)),
-          right: BorderSide(color: AppColors.ink.withValues(alpha: 0.08)),
-          bottom: BorderSide(color: AppColors.ink.withValues(alpha: 0.08)),
+    // ClipRRect statt eines Border mit gemischten Seitenfarben: Flutter
+    // kann bei borderRadius nur einfarbige Border zeichnen, sonst wirft
+    // BoxBorder.paint() bei jedem Repaint eine Exception.
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(6),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: AppColors.card,
+          border: Border.all(color: AppColors.ink.withValues(alpha: 0.08)),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(scaleName.toUpperCase(), style: text.labelSmall),
-          const SizedBox(height: 8),
-          Text(step, style: text.bodyLarge),
-        ],
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(width: 3, color: AppColors.accent),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(scaleName.toUpperCase(), style: text.labelSmall),
+                    const SizedBox(height: 8),
+                    Text(step, style: text.bodyLarge),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
