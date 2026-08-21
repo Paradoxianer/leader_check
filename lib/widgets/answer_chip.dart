@@ -28,7 +28,7 @@ class AnswerChip extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(8),
         child: Container(
-          width: 68,
+          width: 76,
           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
@@ -44,7 +44,7 @@ class AnswerChip extends StatelessWidget {
               Text(
                 label,
                 textAlign: TextAlign.center,
-                maxLines: 2,
+                maxLines: 3,
                 style: TextStyle(
                   fontSize: 10.5,
                   height: 1.2,

@@ -23,7 +23,7 @@ class TestScreen extends StatefulWidget {
 }
 
 class _TestScreenState extends State<TestScreen> {
-  static const double _itemExtent = 270;
+  static const double _itemExtent = 300;
 
   final Map<String, int> _answers = {};
   final CarouselController _controller = CarouselController();
@@ -99,7 +99,7 @@ class _TestScreenState extends State<TestScreen> {
                     controller: _controller,
                     scrollDirection: Axis.vertical,
                     itemExtent: _itemExtent,
-                    shrinkExtent: 210,
+                    shrinkExtent: 230,
                     itemSnapping: true,
                     enableSplash: false,
                     backgroundColor: Colors.transparent,
