@@ -41,15 +41,21 @@ class AnswerChip extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                label,
-                textAlign: TextAlign.center,
-                maxLines: 3,
-                style: TextStyle(
-                  fontSize: 10.5,
-                  height: 1.2,
-                  fontWeight: selected ? FontWeight.w700 : FontWeight.w600,
-                  color: selected ? Colors.white : AppColors.ink,
+              SizedBox(
+                height: 38,
+                child: Center(
+                  child: Text(
+                    label,
+                    textAlign: TextAlign.center,
+                    maxLines: 3,
+                    style: TextStyle(
+                      fontSize: 10.5,
+                      height: 1.2,
+                      fontWeight:
+                          selected ? FontWeight.w700 : FontWeight.w600,
+                      color: selected ? Colors.white : AppColors.ink,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 4),
