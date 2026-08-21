@@ -102,7 +102,8 @@ class ItemBank {
   /// entstanden sind.
   final int version;
 
-  /// Höchster Antwortwert (0..scaleMax). Bei 4 sind das fünf Stufen.
+  /// Höchster Antwortwert (0..scaleMax), also scaleMax + 1 Stufen. Bewusst
+  /// eine gerade Anzahl (Stufen 0..5), damit keine goldene Mitte wählbar ist.
   final int scaleMax;
 
   final List<String> likertLabels;

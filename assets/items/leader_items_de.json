@@ -1,12 +1,13 @@
 {
-  "itembankVersion": 1,
+  "itembankVersion": 2,
   "locale": "de",
-  "scaleMax": 4,
+  "scaleMax": 5,
   "likertLabels": [
     "trifft gar nicht zu",
+    "trifft überwiegend nicht zu",
     "trifft eher nicht zu",
-    "teils/teils",
     "trifft eher zu",
+    "trifft überwiegend zu",
     "trifft voll zu"
   ],
   "scales": [
