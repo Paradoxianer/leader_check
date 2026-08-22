@@ -132,9 +132,8 @@ class _ResultScreenState extends State<ResultScreen> {
               const SizedBox(height: 32),
               Text(
                 'Der ehrlichste Test ist der nächste Schritt: Stell drei '
-                'Leuten aus deinem Team dieselben Fragen über dich. Die '
-                'Differenz zwischen beiden Bildern ist das eigentliche '
-                'Ergebnis.',
+                'Leuten aus deinem Team einfach mal Fragen über dein Leitungsstiel und
+                bitte diesen ehrlich zu bewerten.',
                 style: text.bodyMedium?.copyWith(color: AppColors.muted),
               ),
                     ],
